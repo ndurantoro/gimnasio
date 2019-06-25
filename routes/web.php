@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('alumno','AlumnoController');
+Route::resource('asistencia','AsistenciaController');
+Route::resource('disciplina','DisciplinaController');
+Route::resource('login','LoginController');
+Route::resource('mensualidad','MensualidadController');
+Route::resource('plan','PlanController');
+Route::resource('profesor','ProfesorController');
