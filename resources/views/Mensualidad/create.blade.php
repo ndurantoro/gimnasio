@@ -1,8 +1,42 @@
-<?php
+@extends('Layouts/principal')
+@section('content')
+<form method="POST" action="{{route('mensualidad.store')}}" role="form">
+    {{csrf_field()}}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">                      
+                <h4 class="modal-title">Plan alumno</h4>
+            </div>
+            <div class="modal-body">                    
+                <div class="form-group">
+                    <label>Alumno</label>
+                    <select name="disciplina" id="disciplina" class="form-control" >
+                        @foreach ($alumnos as $alumno)
+                        <option value="{{$alumno['nombres']}}"> {{$alumno['nombres']}} {{$alumno['appaterno']}} {{$alumno['apmaterno']}}</option>
+                        @endforeach
+                    </select>
+                </div> 
+                <div class="form-group">
+                    <label>Plan</label>
+                    <select name="disciplina" id="disciplina" class="form-control" >
+                        @foreach ($planes as $plan)
+                        <option value="{{$plan['nombreplan']}}"> {{$plan['nombreplan']}}</option>
+                        @endforeach
+                    </select>
+                </div> 
+                
+                <div class="form-group">
+                    <label>Fecha Pago</label>
+                    <input type="date" name="fechapago" id="fechapago" class="form-control" required value="">
+                </div>
+                <div class="modal-footer">                    
+                    <a href="{{route('mensualidad.index')}}" class="btn btn-info">Regresar</a>
+                    <input type="submit" value="Registrar Plan" class="btn btn-success">
+                </div>  
+            </div>
+        </div>
+        
+    </div>
+</form>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+@stop

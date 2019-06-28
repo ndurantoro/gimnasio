@@ -77,7 +77,7 @@ class AlumnoController extends Controller
      */
     public function update($id)
     {
-        Alumno::find($id)->update;
+        Alumno::find($id)->update();
         return redirect()->route('alumno.index')->with('success','Datos actualizados');
     }
 

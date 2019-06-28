@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mensualidad;
+use App\Alumno;
+use App\Plan;
 
 class MensualidadController extends Controller
 {
@@ -14,7 +16,8 @@ class MensualidadController extends Controller
      */
     public function index()
     {
-        //
+        $mensualidades= Mensualidad::orderBy('id','DESC')->paginate();
+	return view('Mensualidad.index',compact('mensualidades'));
     }
 
     /**
@@ -24,7 +27,9 @@ class MensualidadController extends Controller
      */
     public function create()
     {
-        //
+        $alumnos = Alumno::all();
+        $planes = Plan::all();
+        return view('Mensualidad.create', compact('alumnos'), compact('planes'));
     }
 
     /**
@@ -35,7 +40,9 @@ class MensualidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,['usuario'=>'required','nomplan'=>'required', 'fechapago'=>'required']);
+        Mensualidad::create();
+        return redirect()->route('mensualidad.index')->with('sucess','plan registrada');
     }
 
     /**
@@ -57,7 +64,10 @@ class MensualidadController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alumnos = Alumno::all();
+        $planes = Plan::all();
+        $mensualidad=  Mensualidad::find($id);
+        return view('Mensualidad.edit',  compact('mensualidad'), compact('planes'), compact('alumnos'));
     }
 
     /**
@@ -69,7 +79,8 @@ class MensualidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Mensualidad::find($id)->update();
+        return redirect()->route('mensualidad.index')->with('success','Plan actualizado');
     }
 
     /**
@@ -80,6 +91,7 @@ class MensualidadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Mensualidad::find($id)->delete();
+        return redirect()->route('mensualidad.index')->with('success','Plan eliminado');
     }
 }

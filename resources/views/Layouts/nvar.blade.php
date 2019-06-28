@@ -14,9 +14,9 @@
 			<li class="nav-item"><a href="{{ url('/') }}" class="nav-link"><i class="fa fa-home"></i><span>Inicio</span></a></li>
                         <li class="nav-item"><a href="alumno" class="nav-link"><i class="fa fa-users" aria-hidden="true"></i><span>Alumnos</span></a></li>
 			<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-calendar-check-o" aria-hidden="true"></i><span>Registro asistencia</span></a></li>
-			<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-calendar" aria-hidden="true"></i><span>Mensualidad</span></a></li>
+			<li class="nav-item"><a href="mensualidad" class="nav-link"><i class="fa fa-calendar" aria-hidden="true"></i><span>Mensualidad</span></a></li>
                         <li class="nav-item"><a class="nav-link"></a></li>
-                        <li><a href="#" class="nav-item"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar sesión</a></li>
+                        <li><a href="https://www.google.cl/" class="nav-item"><i class="fa fa-sign-out" aria-hidden="true"></i>Cerrar sesión</a></li>
 		</ul>
 	</div>
 </nav>

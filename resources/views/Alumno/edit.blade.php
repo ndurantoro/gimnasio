@@ -1,4 +1,5 @@
 @extends('Layouts/principal')
+@section('content')
 <form method="POST" action="{{route('alumno.update',$alumno->id)}}" role="form">
     {{csrf_field()}}
      <input name="_method" type="hidden" value="PATCH">
@@ -66,4 +67,5 @@
     </div>
 </form>
 
-@yield('content')
+
+@stop
