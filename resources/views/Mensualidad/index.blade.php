@@ -104,6 +104,14 @@
         margin-top: 10px;
         font-size: 13px;
     }    
+    
+    	.status {
+		font-size: 30px;
+		margin: 2px 2px 0 0;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 10px;
+	}
 </style>
 
 @extends('Layouts/principal')
@@ -128,6 +136,8 @@
                         <th>Usuario</th>
                         <th>Nombre plan</th>
 			<th>Fecha de pago</th>
+                        <th>Dias asistidos</th>
+                        <th>Estado</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -137,6 +147,8 @@
                         <td>{{$mensualidad->usuario}}</td>
                         <td>{{$mensualidad->nomplan}}</td>
                         <td>{{$mensualidad->fechapago}}</td>
+                        <td>5</td>
+                        <td><span class="status text-success">&bull;</span></td>
                         <td>
                             <a href="{{action('MensualidadController@edit',$mensualidad->id)}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
