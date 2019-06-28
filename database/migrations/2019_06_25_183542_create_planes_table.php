@@ -14,9 +14,9 @@ class CreatePlanesTable extends Migration
     public function up()
     {
         Schema::create('planes', function (Blueprint $table) {
-            $table->bigIncrements('idplan');
+            $table->bigIncrements('id');
             $table->string('nombreplan');
-            $table->integer('diassemana');
+            $table->integer('diasalmes');
             $table->timestamps();
         });
     }

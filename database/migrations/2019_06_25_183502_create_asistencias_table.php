@@ -14,7 +14,7 @@ class CreateAsistenciasTable extends Migration
     public function up()
     {
         Schema::create('asistencias', function (Blueprint $table) {
-            $table->bigIncrements('idasistencia');
+            $table->bigIncrements('id');
             $table->string('nomalumno');
             $table->date('fecha');
             $table->string('nomprofesor');

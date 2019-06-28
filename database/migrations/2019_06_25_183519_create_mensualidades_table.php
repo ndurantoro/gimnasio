@@ -14,7 +14,7 @@ class CreateMensualidadesTable extends Migration
     public function up()
     {
         Schema::create('mensualidades', function (Blueprint $table) {
-            $table->bigIncrements('idmensualidad');
+            $table->bigIncrements('id');
             $table->string('usuario');
             $table->string('nomplan');
             $table->date('fechapago');

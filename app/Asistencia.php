@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asistencia extends Model
 {
-    protected  $fillable=['idasistencia','nomalumno','fecha','nomprofesor'];
+    protected  $fillable=['id','nomalumno','fecha','nomprofesor'];
     protected  $table='asistencias';
 }

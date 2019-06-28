@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Alumno;
+use App\Disciplina;
 
 class AlumnoController extends Controller
 {
@@ -14,7 +15,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        return view('Alumno.index');
+	return view('Alumno.index');
     }
 
     /**
@@ -23,8 +24,10 @@ class AlumnoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('Alumno.create');
+    {   
+        $disciplinas = Disciplina::all();
+        $alumnos= Alumno::orderBy('id')->paginate();
+	return view('Alumno.index',  compact('alumnos'), compact('disciplinas'));
     }
 
     /**
@@ -34,8 +37,11 @@ class AlumnoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $this->validate($request,['rut'=>'required','nombres'=>'required','appaterno'=>'required','apmaterno'=>'required','direccion'=>'required',
+            'fono'=>'required','fecnac'=>'required','alergia'=>'required','enfermedad'=>'required','fonoemergencia'=>'required']);  
+        Alumno::create($request->all());
+        return redirect()->route('alumno.index')->with('sucess','Alumno registrado');
     }
 
     /**
@@ -57,7 +63,9 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
-        return view('Alumno.edit');
+        $disciplinas = Disciplina::all();
+        $alumnos=  Alumno::find($id);
+        return view('Alumno.index',  compact('alumnos'), compact('disciplinas'));
     }
 
     /**
@@ -69,7 +77,9 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[]);
+        Alumno::find($id)->update;
+        return redirect()->route('alumno.index')->with('success','Plan actualizado');
     }
 
     /**
@@ -80,6 +90,7 @@ class AlumnoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alumno::find($id)->delete();
+        return redirect()->route('alumno.index')->with('success','Plan eliminado');
     }
 }

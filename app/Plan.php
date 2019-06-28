@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
-    protected  $fillable=['idplan','nombreplan','diassemana'];
+    protected  $fillable=['id','nombreplan','diasalmes'];
     protected  $table='planes';
 }
