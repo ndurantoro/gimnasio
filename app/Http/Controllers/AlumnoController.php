@@ -14,8 +14,9 @@ class AlumnoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-	return view('Alumno.index');
+    {      
+        $alumnos= Alumno::orderBy('appaterno','ASC')->paginate();
+	return view('Alumno.index',compact('alumnos'));
     }
 
     /**
@@ -26,8 +27,7 @@ class AlumnoController extends Controller
     public function create()
     {   
         $disciplinas = Disciplina::all();
-        $alumnos= Alumno::orderBy('id')->paginate();
-	return view('Alumno.index',  compact('alumnos'), compact('disciplinas'));
+        return view('Alumno.create', compact('disciplinas'));
     }
 
     /**
@@ -64,8 +64,8 @@ class AlumnoController extends Controller
     public function edit($id)
     {
         $disciplinas = Disciplina::all();
-        $alumnos=  Alumno::find($id);
-        return view('Alumno.index',  compact('alumnos'), compact('disciplinas'));
+        $alumno= Alumno::find($id);
+        return view('Alumno.edit',  compact('alumno'), compact('disciplinas'));
     }
 
     /**
@@ -75,11 +75,10 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $this->validate($request,[]);
         Alumno::find($id)->update;
-        return redirect()->route('alumno.index')->with('success','Plan actualizado');
+        return redirect()->route('alumno.index')->with('success','Datos actualizados');
     }
 
     /**
